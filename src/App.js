@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import BookList from './components/BookList';
+import Header from './components/Header';
+import AddBookModal from './components/AddBookModal';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [status, setStatus] = useState(false)
+    function handleModalForm(){
+        setStatus(!status)
+    }
+    return (
+        <div className="App">
+            <Header />
+            <button type="button" className="btn btn-info mr-add" onClick={handleModalForm}>Thêm sách</button>
+            { status && <AddBookModal modal={handleModalForm}/> }
+            <BookList />
+        </div>
+    );
 }
 
 export default App;
