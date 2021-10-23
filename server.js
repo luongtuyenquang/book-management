@@ -38,6 +38,11 @@ app.post('/book', async(request, responsive) => {
     })
 })
 
+// Delete Book
+app.delete('/book/:id', async(request, responsive) => {
+    await dboprations.deleteBook(request.params.id)
+    
+})
 
 const port = process.env.PORT || 8000
 app.listen(port)

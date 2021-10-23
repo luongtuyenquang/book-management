@@ -1,9 +1,8 @@
 import { useState } from "react"
-// import { useHistory } from 'react-router-dom';
+
 const axios = require('axios');
 
 export default function AddBookModal(props){
-    // const history = useHistory()
     const [value, setValue] = useState({
         txtMaSP: '',
         txtTenSP: '',
@@ -31,7 +30,7 @@ export default function AddBookModal(props){
     }
 
     function handleSubmitForm(e){
-        e.preventDefault()
+        // e.preventDefault()
 
         const newValue = {
             Ma: value.txtMaSP, 
@@ -52,7 +51,7 @@ export default function AddBookModal(props){
         }
         axios.post('http://localhost:8000/book', newValue)
           .then(function (response) {
-              // history.goBack()
+            
           })
           .catch(function (error) {
             console.log(error);

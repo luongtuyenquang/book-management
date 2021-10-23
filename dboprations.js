@@ -42,8 +42,23 @@ async function createBook(book){
         console.log(error);
     }
 }
+
+async function deleteBook(BookID){
+    try{
+        let pool = await sql.connect(config)
+        let book = await pool.request()
+            .input('id_param', sql.Int, BookID)
+            .query("DELETE FROM dbo.Sach where ID = @id_param")
+        return book.recordset
+    }
+    catch (error){
+        console.log(error);
+    }
+}
+
 module.exports = {
     createBook,
     getOrders,
-    getOrder
+    getOrder,
+    deleteBook
 }

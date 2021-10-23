@@ -1,22 +1,10 @@
 import BookItem from "./BookItem";
-import { useEffect, useState } from 'react';
-const axios = require('axios');
+
 
 function BookList(props) {
 
-    const [books, setBook] = useState([])
-
-     useEffect(() => {
-        async function fetchAPI(){
-            const url = 'http://localhost:8000/book'
-            const res = await axios.get(url)
-            setBook(res.data)
-        }
-        fetchAPI()
-    }, [])
-
-    const renderBook = books.map((book, index) => {
-        return <BookItem books={book} key={index}/>
+    const renderBook = props.books.map((book, index) => {
+        return <BookItem books={book} key={index} delete={props.delete}/>
     })
 
 
