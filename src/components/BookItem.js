@@ -5,6 +5,9 @@ function BookItem(props) {
     function handleDelete(){
         props.delete(book.ID)
     }
+    function handleUpdate(){
+        props.update(book)
+    }
 
     return (
         <tr>
@@ -20,7 +23,7 @@ function BookItem(props) {
             <td>{book.NgayTao}</td>
             <td>{book.NguoiTao}</td>
             <td>
-                <button type="button" className="btn btn-success mr-10">Sửa</button>
+                <button type="button" className="btn btn-success mr-10" onClick={handleUpdate}>Sửa</button>
                 <button type="button" className="btn btn-danger" onClick={handleDelete}>Xóa</button>
             </td>
         </tr>

@@ -10,6 +10,7 @@ function App() {
 
     const [status, setStatus] = useState(false)
     const [books, setBook] = useState([])
+    const [editBook, setEditBook] = useState(null)
 
     useEffect(() => {
        async function fetchAPI(){
@@ -20,8 +21,9 @@ function App() {
        fetchAPI()
    }, [])
 
-    function handleModalForm(){
+    function handleToggleForm(){
         setStatus(!status)
+        // setEditBook(null)
     }
 
     function handleDelete(id){
@@ -32,12 +34,20 @@ function App() {
         setBook(newBookList)
     }
     
+    function openUpdateForm(){
+        setStatus(!status)
+    }
+
+    function handleUpdate(book){
+        setEditBook(book)
+        openUpdateForm()
+    }
     return (
         <div className="App">
             <Header />
-            <button type="button" className="btn btn-info mr-add" onClick={handleModalForm}>Thêm sách</button>
-            { status && <AddBookModal modal={handleModalForm} /> }
-            <BookList books={books} delete={handleDelete}/>
+            <button type="button" className="btn btn-info mr-add" onClick={handleToggleForm}>Thêm sách</button>
+            { status && <AddBookModal modal={handleToggleForm} update={editBook} /> }
+            <BookList books={books} delete={handleDelete} update={handleUpdate}/>
         </div>
     );
 }
