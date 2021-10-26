@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom";
-import { useHistory } from 'react-router';
+import { useHistory, useRouteMatch } from 'react-router';
 
 const axios = require('axios');
 
@@ -33,34 +33,94 @@ export default function AddBookModal(props){
         }))
     }
 
+    const match = useRouteMatch()
+    useEffect(() => {
+        const id = match.params.id
+        axios.get(`http://localhost:8000/book/${id}`)
+            .then(function (res) {
+                const data = res.data
+                setValue({
+                    id: data.ID,
+                    txtMaSP: data.Ma,
+                    txtTenSP: data.Ten,
+                    txtHinhBia: data.HinhBia,
+                    txtTomTat: data.TomTat,
+                    txtLink: data.Link,
+                    txtNgayXuatBan: data.NgayXuatBan,
+                    txtNhaXuatBan: data.NhaXuatBan,
+                    txtTenTacGia: data.TenTacGia,
+                    txtDaXoa: data.DaXoa,
+                    txtNgayTao: data.NgayTao,
+                    txtNguoiTao: data.NguoiTao,
+                    txtNgaySua: data.NgaySua,
+                    txtNguoiSua: data.NguoiSua,
+                    txtNgayXoa: data.NgayXoa,
+                    txtNguoiXoa: data.NguoiXoa
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, [])
+
+    const id = value.id
     function handleSubmitForm(){
-        const newValue = {
-            Ma: value.txtMaSP, 
-            Ten: value.txtTenSP, 
-            HinhBia: value.txtHinhBia, 
-            TomTat: value.txtTomTat, 
-            Link: value.txtLink, 
-            NgayXuatBan: value.txtNgayXuatBan, 
-            NhaXuatBan: value.txtNhaXuatBan, 
-            TenTacGia: value.txtTenTacGia, 
-            DaXoa: value.txtDaXoa,
-            NgayTao: value.txtNgayTao, 
-            NguoiTao: value.txtNguoiTao, 
-            NgaySua: value.txtNgaySua,
-            NguoiSua: value.txtNguoiSua,
-            NgayXoa: value.txtNgayXoa,
-            NguoiXoa: value.txtNguoiXoa
-        }
-        axios.post('http://localhost:8000/book', newValue)
-          .then(function (response) {
-                history.goBack('/book')
+        if(id){
+            axios.put(`http://localhost:8000/book/${id}`, {
+                Ma: value.txtMaSP, 
+                Ten: value.txtTenSP, 
+                HinhBia: value.txtHinhBia, 
+                TomTat: value.txtTomTat, 
+                Link: value.txtLink, 
+                NgayXuatBan: value.txtNgayXuatBan, 
+                NhaXuatBan: value.txtNhaXuatBan, 
+                TenTacGia: value.txtTenTacGia, 
+                DaXoa: value.txtDaXoa,
+                NgayTao: value.txtNgayTao, 
+                NguoiTao: value.txtNguoiTao, 
+                NgaySua: value.txtNgaySua,
+                NguoiSua: value.txtNguoiSua,
+                NgayXoa: value.txtNgayXoa,
+                NguoiXoa: value.txtNguoiXoa
+            })
+            .then(function (response) {
+                history.goBack()
                 setTimeout(`window.location.href="/book"`,150);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+
+                console.log(value);
+
+            })
+        }else{
+            axios.post('http://localhost:8000/book', {
+                Ma: value.txtMaSP, 
+                Ten: value.txtTenSP, 
+                HinhBia: value.txtHinhBia, 
+                TomTat: value.txtTomTat, 
+                Link: value.txtLink, 
+                NgayXuatBan: value.txtNgayXuatBan, 
+                NhaXuatBan: value.txtNhaXuatBan, 
+                TenTacGia: value.txtTenTacGia, 
+                DaXoa: value.txtDaXoa,
+                NgayTao: value.txtNgayTao, 
+                NguoiTao: value.txtNguoiTao, 
+                NgaySua: value.txtNgaySua,
+                NguoiSua: value.txtNguoiSua,
+                NgayXoa: value.txtNgayXoa,
+                NguoiXoa: value.txtNguoiXoa
+            })
+            .then(function (response) {
+                  history.goBack('/book')
+                  setTimeout(`window.location.href="/book"`,150);
+                  console.log(value);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+        
     }
 
+   
     return (
         <div className='modal-form'>
             <form onSubmit={handleSubmitForm} className='form'>
