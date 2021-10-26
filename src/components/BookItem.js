@@ -21,7 +21,7 @@ function BookItem(props) {
             <td>{book.NgayTao}</td>
             <td>{book.NguoiTao}</td>
             <td>
-                <NavLink to='/book/:id/edit' type="button" className="btn btn-success mr-10">Sửa</NavLink>
+                <NavLink to={`/book/edit/${book.ID}`} type="button" className="btn btn-success mr-10">Sửa</NavLink>
                 <button type="button" className="btn btn-danger" onClick={handleDelete}>Xóa</button>
             </td>
         </tr>

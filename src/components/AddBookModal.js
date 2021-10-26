@@ -53,7 +53,8 @@ export default function AddBookModal(props){
         }
         axios.post('http://localhost:8000/book', newValue)
           .then(function (response) {
-                history.goBack()
+                history.goBack('/book')
+                setTimeout(`window.location.href="/book"`,150);
           })
           .catch(function (error) {
             console.log(error);

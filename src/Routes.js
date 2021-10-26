@@ -13,9 +13,11 @@ export default function Routes() {
                 <Book />
             </Route>
             <Route exact path='/book/add'>
+                <Book />
                 <AddBookModal />
             </Route>
-            <Route exact path='/book/:id/edit'>
+            <Route exact path='/book/edit/:id'>
+                <Book />
                 <AddBookModal />
             </Route>
         </Switch>
