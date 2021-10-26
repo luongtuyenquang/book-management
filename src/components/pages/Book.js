@@ -6,13 +6,14 @@ const axios = require('axios');
 
 export default function Book() {
    
-    const [books, setBook] = useState([])
+    const [books, setBooks] = useState([])
+    const [search, setSearch] = useState('')
 
     useEffect(() => {
        async function fetchAPI(){
            const url = 'http://localhost:8000/book'
            const res = await axios.get(url)
-           setBook(res.data)
+           setBooks(res.data)
        }
        fetchAPI()
    }, [])
@@ -22,13 +23,27 @@ export default function Book() {
         const newBookList = books.filter((book) => {
             return book.ID !== id
         })
-        setBook(newBookList)
+        setBooks(newBookList)
     }
+
+    const filter = books.filter(book => {
+        return book.Ten.toLowerCase().includes(search.toLowerCase()) || book.TenTacGia.toLowerCase().includes(search.toLowerCase())
+    })
 
     return (
         <div>
             <NavLink to='/book/add' type="button" className="btn btn-info mr-add">Thêm sách</NavLink>
-            <BookList books={books} delete={handleDelete}/>
+            <div className="form-group">
+                Tìm kiếm:
+                <input 
+                    type="text" 
+                    className="form-control input-search" 
+                    placeholder='Nhập tên sách hoặc tên tác giả' 
+                    id="exampleInputName2" 
+                    onChange={(e)=> setSearch(e.target.value)}
+                />
+            </div>
+            <BookList books={filter} delete={handleDelete} />
 
         </div>
     );

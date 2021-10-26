@@ -47,3 +47,11 @@
 .mr-15 {
     margin-right: 15px;
 }
+.input-search {
+    display: unset;
+    width: 30%;
+    margin-left: 10px;
+}
+.form-group {
+    padding: 0px 0 15px 15px;
+}
