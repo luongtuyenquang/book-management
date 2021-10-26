@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import { NavLink } from "react-router-dom";
+import { useHistory } from 'react-router';
 
 const axios = require('axios');
+
 export default function AddBookModal(props){
+    const history = useHistory()
 
     const [value, setValue] = useState({
-        id: '',
         txtMaSP: '',
         txtTenSP: '',
         txtHinhBia: '',
@@ -21,37 +24,6 @@ export default function AddBookModal(props){
         txtNgayXoa: '',
         txtNguoiXoa: ''
     })
-
-    const id = props.update.ID
-    useEffect(() => {
-        axios.get(`http://localhost:8000/book/${id}`)
-            .then(function (res) {
-                const data = res.data
-                setValue({
-                    id: data.ID,
-                    txtMaSP: data.Ma,
-                    txtTenSP: data.Ten,
-                    txtHinhBia: data.HinhBia,
-                    txtTomTat: data.TomTat,
-                    txtLink: data.Link,
-                    txtNgayXuatBan: data.NgayXuatBan,
-                    txtNhaXuatBan: data.NhaXuatBan,
-                    txtTenTacGia: data.TenTacGia,
-                    txtDaXoa: data.DaXoa,
-                    txtNgayTao: data.NgayTao,
-                    txtNguoiTao: data.NguoiTao,
-                    txtNgaySua: data.NgaySua,
-                    txtNguoiSua: data.NguoiSua,
-                    txtNgayXoa: data.NgayXoa,
-                    txtNguoiXoa: data.NguoiXoa
-                })
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
     function handleChange(e){
         const name = e.target.name
         const value = e.target.value
@@ -60,11 +32,8 @@ export default function AddBookModal(props){
             [name]: value
         }))
     }
-    
-    function handleSubmitForm(e){
-        const id = props.update.ID
-        // e.preventDefault()
 
+    function handleSubmitForm(){
         const newValue = {
             Ma: value.txtMaSP, 
             Ten: value.txtTenSP, 
@@ -82,21 +51,13 @@ export default function AddBookModal(props){
             NgayXoa: value.txtNgayXoa,
             NguoiXoa: value.txtNguoiXoa
         }
-        if(id){
-            axios.put(`http://localhost:8000/book/${id}`, newValue)
-            .then(function (response) {
-                // history.goBack()
-                console.log(value);
-            })
-        }else{
-            axios.post('http://localhost:8000/book', newValue)
-            .then(function (response) {
-                
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        }
+        axios.post('http://localhost:8000/book', newValue)
+          .then(function (response) {
+                history.goBack()
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     return (
@@ -104,17 +65,6 @@ export default function AddBookModal(props){
             <form onSubmit={handleSubmitForm} className='form'>
                 <div className='form-flex'>
                     <div className='mr-15'>
-                        {/* <div className="form-group">
-                            <label className='label-form' htmlFor="exampleInputEmail1">ID</label>
-                            <input type="text" 
-                                className="form-control" 
-                                id="exampleInputEmail1" 
-                                name='id'
-                                value={value.id}
-                                onChange={handleChange}
-                            >
-                            </input>
-                        </div> */}
                         <div className="form-group">
                             <label className='label-form' htmlFor="exampleInputEmail1">Mã sản phẩm</label>
                             <input type="text" 
@@ -286,7 +236,7 @@ export default function AddBookModal(props){
                     </div>
                 </div>
                 <div className='btn-group'>
-                    <button type="button" className="btn btn-danger mr-10" onClick={props.modal}>Thoát</button>
+                    <NavLink to='/book' type="button" className="btn btn-danger mr-10">Thoát</NavLink>
                     <button type="submit" className="btn btn-success">Lưu lại</button>
                 </div>
                 

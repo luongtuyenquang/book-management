@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function Header() {
     return (
         <header>
@@ -6,7 +8,10 @@ function Header() {
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
                             <li>
-                                <a href='#1'>Trang chủ</a>
+                                <NavLink exact to='/' >Trang chủ</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/book' >Quản lý Book</NavLink>
                             </li>
                         </ul>
                     </div>

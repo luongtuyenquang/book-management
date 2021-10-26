@@ -4,7 +4,7 @@ import BookItem from "./BookItem";
 function BookList(props) {
 
     const renderBook = props.books.map((book, index) => {
-        return <BookItem books={book} key={index} delete={props.delete} update={props.update}/>
+        return <BookItem book={book} key={index} delete={props.delete}/>
     })
 
 
