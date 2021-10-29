@@ -87,9 +87,8 @@ export default function UpdateBookModal(props){
         }
         axios.put(`http://localhost:8000/book/${id}`, newValue)
           .then(function (response) {
-                console.log(value);
                 history.goBack()
-                // setTimeout(`window.location.href="/book"`,150);
+                setTimeout(`window.location.href="/book"`,150);
           })
           .catch(function (error) {
             console.log(error);

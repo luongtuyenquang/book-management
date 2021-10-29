@@ -44,6 +44,16 @@ app.delete('/book/:id', async(request, responsive) => {
     
 })
 
+// Update Book
+app.put('/book/:id', async(request, responsive) => {
+    let id = request.params.id
+    let data = request.body
+    await dboprations.updateEvent(id, data).then(result => {
+        responsive.json(result)
+    })
+    
+})
+
 const port = process.env.PORT || 8000
 app.listen(port)
 console.log('running at: http://localhost:/'+port);

@@ -43,6 +43,7 @@ async function createBook(book){
     }
 }
 
+// Delete Book
 async function deleteBook(BookID){
     try{
         let pool = await sql.connect(config)
@@ -56,9 +57,32 @@ async function deleteBook(BookID){
     }
 }
 
+// Update Book
+async function updateEvent(BookID, eventData){
+    try{
+        let pool = await sql.connect(config)
+        let update = await pool.request()
+            .input('id_param', sql.Int, BookID)
+            .input('Ma', sql.NVarChar(50), eventData.Ma)
+            .input('Ten', sql.NVarChar(100), eventData.Ten)
+            .input('HinhBia', sql.NVarChar(1000), eventData.HinhBia)
+            .input('TomTat', sql.NVarChar(100), eventData.TomTat)
+            .input('Link', sql.NVarChar(1000), eventData.Link)
+            .input('NgayXuatBan', sql.DateTime, eventData.NgayXuatBan)
+            .input('NhaXuatBan', sql.NVarChar(100), eventData.NhaXuatBan)
+            .input('TenTacGia', sql.NVarChar(1000), eventData.TenTacGia)
+            .input('NgayTao', sql.DateTime, eventData.NgayTao)
+            .query("UPDATE dbo.Sach SET Ma = @Ma, Ten = @Ten, HinhBia = @HinhBia, TomTat = @TomTat, Link = @Link, NgayXuatBan = @NgayXuatBan, NhaXuatBan = @NhaXuatBan, TenTacGia = @TenTacGia, NgayTao = @NgayTao WHERE ID = @id_param")
+        return update.recordset
+    }catch(error){
+        res.send(error.massage)
+    }
+}
+
 module.exports = {
     createBook,
     getOrders,
     getOrder,
-    deleteBook
+    deleteBook,
+    updateEvent
 }
