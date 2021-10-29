@@ -25,7 +25,6 @@ function BookList(props) {
                         <th scope="col">Nhà Xuất Bản</th>
                         <th scope="col">Tên Tác Giả</th>
                         <th scope="col">Ngày Tạo</th>
-                        <th scope="col">Người Tạo</th>
                         <th scope="col">Hành động</th>
                         </tr>
                     </thead>

@@ -27,18 +27,26 @@ export default function Book() {
     }
 
     const filter = books.filter(book => {
-        return book.Ten.toLowerCase().includes(search.toLowerCase()) || book.TenTacGia.toLowerCase().includes(search.toLowerCase())
+        return book.Ma.toLowerCase().includes(search.toLowerCase()) 
+            || book.Ten.toLowerCase().includes(search.toLowerCase())
+            || book.HinhBia.toLowerCase().includes(search.toLowerCase())
+            || book.TomTat.toLowerCase().includes(search.toLowerCase())
+            || book.Link.toLowerCase().includes(search.toLowerCase())
+            || book.NgayXuatBan.toLowerCase().includes(search.toLowerCase())
+            || book.NhaXuatBan.toLowerCase().includes(search.toLowerCase())
+            || book.TenTacGia.toLowerCase().includes(search.toLowerCase())
+            || book.NgayTao.toLowerCase().includes(search.toLowerCase())
     })
 
     return (
         <div>
             <NavLink to='/book/add' type="button" className="btn btn-info mr-add">Thêm sách</NavLink>
-            <div className="form-group">
-                Tìm kiếm:
+            <div className="form-group search-form">
+                Lọc:
                 <input 
                     type="text" 
                     className="form-control input-search" 
-                    placeholder='Nhập tên sách hoặc tên tác giả' 
+                    placeholder='Nhập giá trị cần lọc' 
                     id="exampleInputName2" 
                     onChange={(e)=> setSearch(e.target.value)}
                 />
