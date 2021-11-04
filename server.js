@@ -1,12 +1,14 @@
 const Db = require('./dboprations')
 const Book = require('./book')
 const dboprations = require('./dboprations')
+const multer = require('multer')
 
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
 const router = express.Router()
+const upload = multer({dest: './public/uploads/'})
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
@@ -31,7 +33,7 @@ app.get('/book/:id', async(request, responsive) => {
 })
 
 // Create Book
-app.post('/book', async(request, responsive) => {
+app.post('/book', upload.single('txtHinhBia') ,async(request, responsive) => {
     let body = {...request.body}
     await dboprations.createBook(body).then(result => {
         responsive.json(result)

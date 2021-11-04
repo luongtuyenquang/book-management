@@ -63,7 +63,7 @@ export default function AddBookModal(props){
 
     return (
         <div className='modal-form'>
-            <form onSubmit={handleSubmitForm} className='form'>
+            <form onSubmit={handleSubmitForm} className='form' method='POST' encType="multipart/form-data">
                 <div className='form-flex'>
                     <div className='mr-15'>
                         <div className="form-group">
@@ -90,12 +90,10 @@ export default function AddBookModal(props){
                         </div>
                         <div className="form-group">
                             <label className='label-form' htmlFor="exampleInputPassword1">Hình Bìa</label>
-                            <input type="text" 
-                                className="form-control" 
-                                id="exampleInputEmail1"
+                            <input type="file" 
+                                // className="form-control" 
+                                id="exampleInputFile"
                                 name='txtHinhBia'
-                                value={value.txtHinhBia}
-                                onChange={handleChange}
                             >
                             </input>
                         </div>

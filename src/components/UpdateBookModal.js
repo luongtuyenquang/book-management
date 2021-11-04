@@ -136,12 +136,10 @@ export default function UpdateBookModal(props){
                         </div>
                         <div className="form-group">
                             <label className='label-form' htmlFor="exampleInputPassword1">Hình Bìa</label>
-                            <input type="text" 
-                                className="form-control" 
-                                id="exampleInputEmail1"
+                            <input type="file" 
+                                // className="form-control" 
+                                id="exampleInputFile"
                                 name='txtHinhBia'
-                                value={value.txtHinhBia}
-                                onChange={handleChange}
                             >
                             </input>
                         </div>

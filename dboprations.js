@@ -33,8 +33,8 @@ async function createBook(book){
         let books = await pool.request()
         .query(`INSERT INTO dbo.Sach VALUES
             ('${book.Ma}', '${book.Ten}', '${book.HinhBia}', '${book.TomTat}', '${book.Link}', 
-            ${book.NgayXuatBan}, '${book.NhaXuatBan}', '${book.TenTacGia}', ${book.DaXoa}, ${book.NgayTao}, 
-            '${book.NguoiTao}', '${book.NgaySua}', '${book.NguoiSua}', ${book.NgayXoa}, '${book.NguoiXoa}')
+            '${book.NgayXuatBan}', '${book.NhaXuatBan}', '${book.TenTacGia}', ${book.DaXoa}, '${book.NgayTao}', 
+            '${book.NguoiTao}', '${book.NgaySua}', '${book.NguoiSua}', '${book.NgayXoa}', '${book.NguoiXoa}')
         `)
         return books.recordset
     }
