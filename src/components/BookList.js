@@ -3,10 +3,11 @@ import BookItem from "./BookItem";
 
 function BookList(props) {
 
-    const renderBook = props.books.map((book, index) => {
+    const renderBook = props.page.map((book, index) => {
         return <BookItem book={book} key={index} delete={props.delete}/>
     })
 
+    
     return (
         <div className="panel panel-success">
             <div className="panel-heading heading-color">Danh sách Book</div>
@@ -32,6 +33,9 @@ function BookList(props) {
                         { renderBook }
                     </tbody>
                 </table>
+            </div>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+                {props.numberPagination()}  
             </div>
         </div>
     );
