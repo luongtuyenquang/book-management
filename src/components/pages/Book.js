@@ -10,8 +10,9 @@ export default function Book() {
     const [search, setSearch] = useState('')
     const [page, setPage] = useState([])
     const [numberPage, setNumberPage] = useState(0)
+    const [activePage, setActivePage] = useState(1)
     const pageSize = 5
-
+    const pageEnd = books.length / pageSize
 
     useEffect(() => {
        async function fetchAPI(){
@@ -32,7 +33,7 @@ export default function Book() {
     return arr.map((elm, index) => {
         return (
             <div key={index}>
-                <button className='mr-10' onClick={() => handleSwitchPage(elm)}>{elm}</button>
+                <button className={`mr-10 ${elm === activePage ? 'active-page' : ''}`} onClick={() => handleSwitchPage(elm)}>{elm}</button>
             </div>
             )
         })
@@ -45,12 +46,11 @@ export default function Book() {
         handleSwitchPage(Math.floor(numberPage + 1))
     }
 
-    function handleSwitchPage(number){
+    function handleSwitchPage(number, arr){
         const end = pageSize * number
         setPage(books.slice(end - pageSize, end))
+        setActivePage(number)
     }
-
-   
 
     function handleDelete(id){
         axios.delete(`http://localhost:8000/book/${id}`)
@@ -86,7 +86,7 @@ export default function Book() {
                     onChange={(e)=> setSearch(e.target.value)}
                 />
             </div>
-            <BookList delete={handleDelete} prevPage={prevPage} nextPage={nextPage} page={filter} numberPagination={()=>numberPagination(Math.ceil(numberPage))} />
+            <BookList delete={handleDelete} pageEnd={pageEnd} activePage={activePage} prevPage={prevPage} nextPage={nextPage} page={filter} numberPagination={()=>numberPagination(Math.ceil(numberPage))} />
 
         </div>
     );

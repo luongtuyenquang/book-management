@@ -1,8 +1,8 @@
-import { useState } from "react/cjs/react.development";
 import BookItem from "./BookItem";
 
-
 function BookList(props) {
+    const { activePage, pageEnd } = props
+
     const renderBook = props.page.map((book, index) => {
         return <BookItem book={book} key={index} delete={props.delete}/>
     })
@@ -33,10 +33,10 @@ function BookList(props) {
                     </tbody>
                 </table>
             </div>
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-                <button className='mr-10' onClick={props.prevPage}><i className="fas fa-angle-left"></i></button>
+            <div style={{display: 'flex', justifyContent: 'center', marginBottom: 20 + 'px'}}>
+                <button className='mr-10' disabled={activePage === 1 ? 'disabled' : ''} onClick={props.prevPage}><i className="fas fa-angle-left"></i></button>
                 {props.numberPagination()} 
-                <button onClick={props.nextPage}><i className="fas fa-angle-right"></i></button>
+                <button disabled={activePage === Math.ceil(pageEnd) ? 'disabled' : ''} onClick={props.nextPage}><i className="fas fa-angle-right"></i></button>
             </div>
         </div>
     );
