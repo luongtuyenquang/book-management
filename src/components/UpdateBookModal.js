@@ -124,7 +124,7 @@ export default function UpdateBookModal(props){
                             </input>
                         </div>
                         <div className="form-group">
-                            <label className='label-form' htmlFor="exampleInputPassword1">Tên sản phẩm</label>
+                            <label className='label-form' htmlFor="exampleInputPassword1">Tên sách</label>
                             <input type="text" 
                                 className="form-control" 
                                 id="exampleInputEmail1"

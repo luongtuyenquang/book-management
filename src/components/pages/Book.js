@@ -32,10 +32,17 @@ export default function Book() {
     return arr.map((elm, index) => {
         return (
             <div key={index}>
-                <button onClick={() => handleSwitchPage(elm)}>{elm}</button>
+                <button className='mr-10' onClick={() => handleSwitchPage(elm)}>{elm}</button>
             </div>
             )
         })
+    }
+
+    function prevPage(){
+        handleSwitchPage(Math.ceil(numberPage - 1))
+    }
+    function nextPage(){
+        handleSwitchPage(Math.floor(numberPage + 1))
     }
 
     function handleSwitchPage(number){
@@ -43,6 +50,7 @@ export default function Book() {
         setPage(books.slice(end - pageSize, end))
     }
 
+   
 
     function handleDelete(id){
         axios.delete(`http://localhost:8000/book/${id}`)
@@ -69,16 +77,16 @@ export default function Book() {
         <div>
             <NavLink to='/book/add' type="button" className="btn btn-info mr-add">Thêm sách</NavLink>
             <div className="form-group search-form">
-                Lọc:
+                Tìm kiếm:
                 <input 
                     type="text" 
                     className="form-control input-search" 
-                    placeholder='Nhập giá trị cần lọc' 
+                    placeholder='Nhập giá trị cần tìm kiếm' 
                     id="exampleInputName2" 
                     onChange={(e)=> setSearch(e.target.value)}
                 />
             </div>
-            <BookList delete={handleDelete} page={filter} numberPagination={()=>numberPagination(Math.ceil(numberPage))} />
+            <BookList delete={handleDelete} prevPage={prevPage} nextPage={nextPage} page={filter} numberPagination={()=>numberPagination(Math.ceil(numberPage))} />
 
         </div>
     );

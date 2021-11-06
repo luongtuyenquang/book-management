@@ -1,13 +1,12 @@
+import { useState } from "react/cjs/react.development";
 import BookItem from "./BookItem";
 
 
 function BookList(props) {
-
     const renderBook = props.page.map((book, index) => {
         return <BookItem book={book} key={index} delete={props.delete}/>
     })
 
-    
     return (
         <div className="panel panel-success">
             <div className="panel-heading heading-color">Danh sách Book</div>
@@ -35,7 +34,9 @@ function BookList(props) {
                 </table>
             </div>
             <div style={{display: 'flex', justifyContent: 'center'}}>
-                {props.numberPagination()}  
+                <button className='mr-10' onClick={props.prevPage}><i className="fas fa-angle-left"></i></button>
+                {props.numberPagination()} 
+                <button onClick={props.nextPage}><i className="fas fa-angle-right"></i></button>
             </div>
         </div>
     );
