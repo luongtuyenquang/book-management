@@ -1,10 +1,10 @@
 import BookItem from "./BookItem";
 
 function BookList(props) {
-    const { activePage, pageEnd } = props
+    const { activePage, pageEnd, books } = props
 
     const renderBook = props.page.map((book, index) => {
-        return <BookItem book={book} key={index} delete={props.delete}/>
+        return <BookItem books={books} book={book} key={index} delete={props.delete}/>
     })
 
     return (
@@ -15,7 +15,7 @@ function BookList(props) {
                 <table className="table table-bordered">
                     <thead>
                         <tr className="info">
-                        <th scope="col">ID</th>
+                        <th scope="col">STT</th>
                         <th scope="col">Mã Sách</th>
                         <th scope="col">Tên Sách</th>
                         <th scope="col">Hình Bìa</th>

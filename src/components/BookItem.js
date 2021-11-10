@@ -2,14 +2,20 @@ import { NavLink } from "react-router-dom";
 
 function BookItem(props) {
     const book = props.book
-
+    const books = props.books
+    const id = book.ID
+    
     function handleDelete(){
         props.delete(book.ID)
     }
 
+    const findIndex = books.map((book, index) => {
+        if(book.ID === id) return index + 1
+    })
+
     return (
         <tr>
-            <td>{book.ID}</td>
+            <td>{findIndex}</td>
             <td>{book.Ma}</td>
             <td>{book.Ten}</td>
             <td>{book.HinhBia}</td>

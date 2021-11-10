@@ -86,7 +86,7 @@ export default function Book() {
                     onChange={(e)=> setSearch(e.target.value)}
                 />
             </div>
-            <BookList delete={handleDelete} pageEnd={pageEnd} activePage={activePage} prevPage={prevPage} nextPage={nextPage} page={filter} numberPagination={()=>numberPagination(Math.ceil(numberPage))} />
+            <BookList books={books} delete={handleDelete} pageEnd={pageEnd} activePage={activePage} prevPage={prevPage} nextPage={nextPage} page={filter} numberPagination={()=>numberPagination(Math.ceil(numberPage))} />
 
         </div>
     );
