@@ -78,3 +78,6 @@
     border-color: #05c1b8;
     color: #07a9a1;
 }
+.panel-body {
+    min-height: 344px;
+}

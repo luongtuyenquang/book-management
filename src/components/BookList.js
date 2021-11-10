@@ -15,7 +15,7 @@ function BookList(props) {
                 <table className="table table-bordered">
                     <thead>
                         <tr className="info">
-                        {/* <th scope="col">ID</th> */}
+                        <th scope="col">ID</th>
                         <th scope="col">Mã Sách</th>
                         <th scope="col">Tên Sách</th>
                         <th scope="col">Hình Bìa</th>

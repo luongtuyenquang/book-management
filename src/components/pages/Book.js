@@ -40,10 +40,10 @@ export default function Book() {
     }
 
     function prevPage(){
-        handleSwitchPage(Math.ceil(numberPage - 1))
+        handleSwitchPage(activePage - 1)
     }
     function nextPage(){
-        handleSwitchPage(Math.floor(numberPage + 1))
+        handleSwitchPage(activePage + 1)
     }
 
     function handleSwitchPage(number, arr){
