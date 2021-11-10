@@ -34,9 +34,21 @@ function BookList(props) {
                 </table>
             </div>
             <div style={{display: 'flex', justifyContent: 'center', marginBottom: 20 + 'px'}}>
-                <button className='mr-10' disabled={activePage === 1 ? 'disabled' : ''} onClick={props.prevPage}><i className="fas fa-angle-left"></i></button>
+                <button 
+                    className={`mr-10 default size-icon ${activePage === 1 ? 'activeDisabled' : ''}`} 
+                    disabled={activePage === 1 ? 'disabled' : ''} 
+                    onClick={props.prevPage}
+                >
+                    <i className="fas fa-angle-left"></i>
+                </button>
                 {props.numberPagination()} 
-                <button disabled={activePage === Math.ceil(pageEnd) ? 'disabled' : ''} onClick={props.nextPage}><i className="fas fa-angle-right"></i></button>
+                <button 
+                    className={`default size-icon ${activePage === Math.ceil(pageEnd) ? 'activeDisabled' : ''}`} 
+                    disabled={activePage === Math.ceil(pageEnd) ? 'disabled' : ''} 
+                    onClick={props.nextPage}
+                >
+                    <i className="fas fa-angle-right"></i>
+                </button>
             </div>
         </div>
     );

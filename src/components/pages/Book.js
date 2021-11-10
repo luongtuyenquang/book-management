@@ -33,7 +33,7 @@ export default function Book() {
     return arr.map((elm, index) => {
         return (
             <div key={index}>
-                <button className={`mr-10 ${elm === activePage ? 'active-page' : ''}`} onClick={() => handleSwitchPage(elm)}>{elm}</button>
+                <button className={`mr-10 default ${elm === activePage ? 'active-page' : ''}`} onClick={() => handleSwitchPage(elm)}>{elm}</button>
             </div>
             )
         })
