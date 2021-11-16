@@ -12,8 +12,8 @@ function BookList(props) {
             <div className="panel-heading heading-color">Danh sách Book</div>
             
             <div className="panel-body">
-                <table className="table table-bordered">
-                    <thead>
+                <table cellSpacing='10' cellPadding='10' className="table table-bordered">
+                    <thead className='thead-color'>
                         <tr className="info">
                         <th scope="col">STT</th>
                         <th scope="col">Mã Sách</th>
@@ -24,7 +24,6 @@ function BookList(props) {
                         <th scope="col">Ngày Xuất Bản</th>
                         <th scope="col">Nhà Xuất Bản</th>
                         <th scope="col">Tên Tác Giả</th>
-                        <th scope="col">Ngày Tạo</th>
                         <th scope="col">Hành động</th>
                         </tr>
                     </thead>

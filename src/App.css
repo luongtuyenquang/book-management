@@ -1,16 +1,116 @@
+
+.App {
+    display: flex;
+}
+.header {
+    background-color: #343A40;
+    width: 20%;
+    min-height: 100vh;
+}
+.witdh-full {
+    width: 100%;
+}
+.action-flex {
+    display: flex;
+}
+.table {
+    min-width: 1042.88px;
+}
+.avatar {
+    padding: 15px 15px;
+    border-bottom: 1px solid #ffffff36;
+}
+.avatar img {
+    width: 30px;
+    border-radius: 50%;
+    height: 30px;
+}
+.avatar a {
+    text-decoration: none;
+    color: #cdcdcd;
+    padding-left: 10px;
+}
+.navbar-nav li {
+    width: 100%;
+}
+.navbar-nav li:hover{
+    background-color: rgba(255,255,255,.1);
+}
+.header-active {
+    color: white !important;
+}
+.search {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px 0;
+    border-bottom: 1px solid #00000029;
+}
+.search label {
+    padding-top: 2px;
+    color: #000000b5;
+}
+.table-bordered>thead>tr>th {
+    border: 1px solid #0000003b;
+}
+.table>thead>tr.info>th {
+    background-color: #b5e9e5c7;
+}
+.btn-update {
+    background-color: #5a895a;
+    border-color: transparent;
+}
+.btn-update :hover {
+    background-color: #529d52;
+    border-color: transparent;
+}
+.btn-delete {
+    background-color: #bf4b47;
+    border-color: transparent;
+}
+.btn-delete:hover {
+    background-color: #d9433f;
+    border-color: transparent;
+}
+.thead-color {
+    color: black;
+}
+.table>thead:first-child>tr:first-child>th {
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+.navbar-custom {
+    position: sticky;
+    top: 0;
+    background-color: transparent;
+    border: none;
+}
 .panel {
     margin-left: 10px;
-    margin-right: 10px;
+    box-shadow: 0px 0px 3px 1px #00000017;
+    border-radius: 4px;
 }
-
+.navbar-right {
+    background-color: #f2f1ed8a;
+    margin-right: 0;
+}
 .mr-add {
     margin: 10px 0 20px 10px;
+    width: 150px;
+    background-color: #01607c;
+    border-color: transparent;
+}
+.mr-add:hover {
+    background-color: #006e8f;
+    border-color: transparent;
 }
 .btn-success:focus, .btn-danger:focus, .btn-info:focus{
     outline: none !important;
 }
 .mr-10 {
     margin-right: 10px;
+}
+.pd-0 {
+    padding: 0;
 }
 .modal-form {
     background-color: #efefef75;
@@ -49,27 +149,29 @@
     margin-right: 15px;
 }
 .input-search {
-    display: unset;
-    width: 30%;
     margin-left: 10px;
     height: 29px;
     font-size: 12px;
     border-radius: 5px;
     border: 1px solid #898989;
+    width: 250px;
 }
 .search-form {
     padding: 0px 0 15px 15px;
+    display: flex;
+    align-items: center;
 }
 
 .default {
     background-color: transparent;
     border: 1px solid #00000040;
     padding: 2px 10px;
-    font-size: 19px;
+    font-size: 17px;
 }
 .activeDisabled {
     color: #00000057;
     border-color: #00000038;
+    cursor: no-drop !important;
 }
 .size-icon {
     font-size: 15px;
@@ -80,4 +182,6 @@
 }
 .panel-body {
     min-height: 344px;
+    /* padding: 15px 0; */
+
 }

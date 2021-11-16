@@ -93,7 +93,7 @@ export default function AddBookModal(props){
                             <input type="file" 
                                 // className="form-control" 
                                 id="exampleInputFile"
-                                name='txtHinhBia'
+                                name='txtHinhBia'z
                             >
                             </input>
                         </div>

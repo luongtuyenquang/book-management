@@ -19,7 +19,7 @@ export default function Book() {
            const url = 'http://localhost:8000/book'
            const res = await axios.get(url)
            setBooks(res.data)
-           setPage(res.data.slice(0, 5))
+           setPage(res.data.slice(0, pageSize))
            setNumberPage(res.data.length / pageSize)
        }
        fetchAPI()
@@ -74,10 +74,11 @@ export default function Book() {
     })
 
     return (
-        <div>
-            <NavLink to='/book/add' type="button" className="btn btn-info mr-add">Thêm sách</NavLink>
-            <div className="form-group search-form">
-                Tìm kiếm:
+        <div className='navbar-right'>
+            <div className='search'>
+                <h4>Quản lý Sách</h4>
+                <div className="form-group search-form">
+                <label>Tìm kiếm:</label>
                 <input 
                     type="text" 
                     className="form-control input-search" 
@@ -86,6 +87,9 @@ export default function Book() {
                     onChange={(e)=> setSearch(e.target.value)}
                 />
             </div>
+            </div>
+            <NavLink to='/book/add' type="button" className="btn btn-info mr-add">Thêm sách</NavLink>
+            
             <BookList books={books} delete={handleDelete} pageEnd={pageEnd} activePage={activePage} prevPage={prevPage} nextPage={nextPage} page={filter} numberPagination={()=>numberPagination(Math.ceil(numberPage))} />
 
         </div>

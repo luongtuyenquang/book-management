@@ -7,9 +7,9 @@ import UpdateBookModal from "./components/UpdateBookModal";
 export default function Routes() {
     return (
         <Switch>
-            <Route exact path='/'>
+            {/* <Route exact path='/'>
                 <Home />
-            </Route>
+            </Route> */}
             <Route exact path='/book'>
                 <Book />
             </Route>
