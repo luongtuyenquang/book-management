@@ -2,6 +2,7 @@ const Db = require('./dboprations')
 const Book = require('./book')
 const dboprations = require('./dboprations')
 const multer = require('multer')
+var $ = require( "jquery" );
 
 const express = require('express')
 const bodyParser = require('body-parser')

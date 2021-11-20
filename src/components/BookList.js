@@ -12,10 +12,10 @@ function BookList(props) {
             <div className="panel-heading heading-color">Danh sách Book</div>
             
             <div className="panel-body">
-                <table cellSpacing='10' cellPadding='10' className="table table-bordered">
+                <table cellSpacing='10' cellPadding='10' className="table table-bordered" id='myTable'>
                     <thead className='thead-color'>
                         <tr className="info">
-                        <th scope="col">STT</th>
+                        {/* <th scope="col">STT</th> */}
                         <th scope="col">Mã Sách</th>
                         <th scope="col">Tên Sách</th>
                         <th scope="col">Hình Bìa</th>
@@ -24,15 +24,15 @@ function BookList(props) {
                         <th scope="col">Ngày Xuất Bản</th>
                         <th scope="col">Nhà Xuất Bản</th>
                         <th scope="col">Tên Tác Giả</th>
-                        <th scope="col">Hành động</th>
+                        {/* <th scope="col">Hành động</th> */}
                         </tr>
                     </thead>
                     <tbody>
-                        { renderBook }
+                        {/* { renderBook } */}
                     </tbody>
                 </table>
             </div>
-            <div style={{display: 'flex', justifyContent: 'center', marginBottom: 20 + 'px'}}>
+            {/* <div style={{display: 'flex', justifyContent: 'center', marginBottom: 20 + 'px'}}>
                 <button 
                     className={`mr-10 default size-icon ${activePage === 1 ? 'activeDisabled' : ''}`} 
                     disabled={activePage === 1 ? 'disabled' : ''} 
@@ -48,7 +48,7 @@ function BookList(props) {
                 >
                     <i className="fas fa-angle-right"></i>
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 }

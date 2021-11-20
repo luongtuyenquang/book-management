@@ -153,7 +153,7 @@ export default function AddBookModal(props){
                             </input>
                         </div>
                     </div>
-                    <div>
+                    <div className='width-50'>
                         <div className="form-group">
                             <label className='label-form' htmlFor="exampleInputPassword1">Đã Xóa</label>
                             <input type="text" 

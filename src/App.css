@@ -4,7 +4,7 @@
 }
 .header {
     background-color: #343A40;
-    width: 20%;
+    max-width: 20%;
     min-height: 100vh;
 }
 .witdh-full {
@@ -129,10 +129,10 @@
     margin-bottom: 0;
 }
 .form {
-    width: 35%;
-    margin: 30px auto 0;
+    width: 50%;
+    margin: 50px auto 0;
     background-color: white;
-    padding: 15px 25px 20px;
+    padding: 20px 25px 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 9px 1px #00000054;
 }
@@ -147,6 +147,10 @@
 }
 .mr-15 {
     margin-right: 15px;
+    width: 50%;
+}
+.width-50 {
+    flex: 1;
 }
 .input-search {
     margin-left: 10px;
@@ -167,6 +171,9 @@
     border: 1px solid #00000040;
     padding: 2px 10px;
     font-size: 17px;
+}
+.panel-success>.panel-heading {
+    background-color: #cfedc3;
 }
 .activeDisabled {
     color: #00000057;
