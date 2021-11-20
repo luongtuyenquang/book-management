@@ -1,21 +1,30 @@
 import BookItem from "./BookItem";
 
 function BookList(props) {
-    const { activePage, pageEnd, books } = props
+    // const { activePage, pageEnd, books } = props
 
-    const renderBook = props.page.map((book, index) => {
-        return <BookItem books={books} book={book} key={index} delete={props.delete}/>
-    })
+    // const renderBook = props.page.map((book, index) => {
+    //     return <BookItem books={books} book={book} key={index} delete={props.delete}/>
+    // })
+
+    // console.log(props.datas);
+
+    function handleDelete(){
+        // const id = props.datas.map(item => {
+        //     return item.ID
+        // })
+        // props.delete(id)
+    }
 
     return (
         <div className="panel panel-success">
             <div className="panel-heading heading-color">Danh sách Book</div>
-            
+            {/* <button onClick={handleDelete} id="button">Delete selected row</button> */}
             <div className="panel-body">
                 <table cellSpacing='10' cellPadding='10' className="table table-bordered" id='myTable'>
                     <thead className='thead-color'>
                         <tr className="info">
-                        {/* <th scope="col">STT</th> */}
+                        <th scope="col">STT</th>
                         <th scope="col">Mã Sách</th>
                         <th scope="col">Tên Sách</th>
                         <th scope="col">Hình Bìa</th>

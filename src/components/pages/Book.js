@@ -16,6 +16,7 @@ export default function Book() {
     const [activePage, setActivePage] = useState(1)
     const pageSize = 5
     const pageEnd = books.length / pageSize
+    const [datas, setDatas] = useState([])
 
     useEffect(() => {
        async function fetchAPI(){
@@ -26,12 +27,13 @@ export default function Book() {
            setNumberPage(res.data.length / pageSize)
 
            const dataSet = res.data
-
+           setDatas(dataSet)
            $(document).ready(function() {
             // $.noConflict();
             $('#myTable').DataTable( {
                 data: dataSet,
                 columns: [
+                    { data: "" },
                     { data: "Ma" },
                     { data: "Ten" },
                     { data: "HinhBia" },
@@ -39,12 +41,45 @@ export default function Book() {
                     { data: "Link" },
                     { data: "NgayXuatBan" },
                     { data: "NhaXuatBan" },
-                    { data: "TenTacGia" },
+                    { data: "TenTacGia" }
                 ],
             } );
         } );
 
-       
+        // $(document).ready(function() {
+        //     var table = $('#myTable').DataTable();
+         
+        //     $('#myTable tbody').on( 'click', 'tr', function () {
+        //         if ( $(this).hasClass('selected') ) {
+        //             $(this).removeClass('selected');
+        //         }
+        //         else {
+        //             table.$('tr.selected').removeClass('selected');
+        //             $(this).addClass('selected');
+        //         }
+        //     } );
+         
+        //     $('#button').click( function () {
+        //         table.row('.selected').remove().draw( false );
+        //     } );
+        // } );
+
+        $(document).ready(function() {
+            var t = $('#myTable').DataTable( {
+                "columnDefs": [ {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": 0,     
+                } ],
+                "order": [[ 1, 'asc' ]]
+            } );
+         
+            t.on( 'order.dt search.dt', function () {
+                t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                    cell.innerHTML = i+1;
+                } );
+            } ).draw();
+        } );
 
        }
        fetchAPI()
@@ -78,25 +113,26 @@ export default function Book() {
 //     }
 
     function handleDelete(id){
-        axios.delete(`http://localhost:8000/book/${id}`)
-        const newBookList = page.filter((book) => {
-            return book.ID !== id
-        })
-        setPage(newBookList)
-        setTimeout(`window.location.href="/book"`,150);
+        // console.log(id);
+        // axios.delete(`http://localhost:8000/book/${id}`)
+        // const newBookList = page.filter((book) => {
+        //     return book.ID !== id
+        // })
+        // return newBookList
+        // setTimeout(`window.location.href="/book"`,150);
     }
 
-    const filter = page.filter(book => {
-        return book.Ma.toLowerCase().includes(search.toLowerCase()) 
-            || book.Ten.toLowerCase().includes(search.toLowerCase())
-            || book.HinhBia.toLowerCase().includes(search.toLowerCase())
-            || book.TomTat.toLowerCase().includes(search.toLowerCase())
-            || book.Link.toLowerCase().includes(search.toLowerCase())
-            || book.NgayXuatBan.toLowerCase().includes(search.toLowerCase())
-            || book.NhaXuatBan.toLowerCase().includes(search.toLowerCase())
-            || book.TenTacGia.toLowerCase().includes(search.toLowerCase())
-            || book.NgayTao.toLowerCase().includes(search.toLowerCase())
-    })
+    // const filter = page.filter(book => {
+    //     return book.Ma.toLowerCase().includes(search.toLowerCase()) 
+    //         || book.Ten.toLowerCase().includes(search.toLowerCase())
+    //         || book.HinhBia.toLowerCase().includes(search.toLowerCase())
+    //         || book.TomTat.toLowerCase().includes(search.toLowerCase())
+    //         || book.Link.toLowerCase().includes(search.toLowerCase())
+    //         || book.NgayXuatBan.toLowerCase().includes(search.toLowerCase())
+    //         || book.NhaXuatBan.toLowerCase().includes(search.toLowerCase())
+    //         || book.TenTacGia.toLowerCase().includes(search.toLowerCase())
+    //         || book.NgayTao.toLowerCase().includes(search.toLowerCase())
+    // })
 
     return (
         <div className='navbar-right'>
@@ -115,8 +151,9 @@ export default function Book() {
             </div>
             <NavLink to='/book/add' type="button" className="btn btn-info mr-add">Thêm sách</NavLink>
             
+            {/* pageEnd={pageEnd} activePage={activePage}  page={filter} books={books} */}
             {/* prevPage={prevPage} nextPage={nextPage} numberPagination={()=>numberPagination(Math.ceil(numberPage))}*/}
-            <BookList books={books} delete={handleDelete} pageEnd={pageEnd} activePage={activePage}  page={filter} />
+            <BookList datas={datas} delete={handleDelete}  />
 
         </div>
     );

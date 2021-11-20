@@ -192,3 +192,6 @@
     /* padding: 15px 0; */
 
 }
+.dataTables_wrapper .dataTables_length {
+    margin-bottom: 10px;
+}
