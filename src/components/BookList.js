@@ -1,25 +1,11 @@
-import BookItem from "./BookItem";
+// import BookItem from "./BookItem";
 
-function BookList(props) {
-    // const { activePage, pageEnd, books } = props
-
-    // const renderBook = props.page.map((book, index) => {
-    //     return <BookItem books={books} book={book} key={index} delete={props.delete}/>
-    // })
-
-    // console.log(props.datas);
-
-    function handleDelete(){
-        // const id = props.datas.map(item => {
-        //     return item.ID
-        // })
-        // props.delete(id)
-    }
+function BookList() {
 
     return (
         <div className="panel panel-success">
             <div className="panel-heading heading-color">Danh sách Book</div>
-            {/* <button onClick={handleDelete} id="button">Delete selected row</button> */}
+            <button className='btn-delete' id="button">Xóa</button>
             <div className="panel-body">
                 <table cellSpacing='10' cellPadding='10' className="table table-bordered" id='myTable'>
                     <thead className='thead-color'>
@@ -37,27 +23,10 @@ function BookList(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* { renderBook } */}
+
                     </tbody>
                 </table>
             </div>
-            {/* <div style={{display: 'flex', justifyContent: 'center', marginBottom: 20 + 'px'}}>
-                <button 
-                    className={`mr-10 default size-icon ${activePage === 1 ? 'activeDisabled' : ''}`} 
-                    disabled={activePage === 1 ? 'disabled' : ''} 
-                    onClick={props.prevPage}
-                >
-                    <i className="fas fa-angle-left"></i>
-                </button>
-                {props.numberPagination()} 
-                <button 
-                    className={`default size-icon ${activePage === Math.ceil(pageEnd) ? 'activeDisabled' : ''}`} 
-                    disabled={activePage === Math.ceil(pageEnd) ? 'disabled' : ''} 
-                    onClick={props.nextPage}
-                >
-                    <i className="fas fa-angle-right"></i>
-                </button>
-            </div> */}
         </div>
     );
 }

@@ -19,6 +19,8 @@
 .avatar {
     padding: 15px 15px;
     border-bottom: 1px solid #ffffff36;
+    position: sticky;
+    top: 0;
 }
 .avatar img {
     width: 30px;
@@ -66,10 +68,21 @@
 .btn-delete {
     background-color: #bf4b47;
     border-color: transparent;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
 }
 .btn-delete:hover {
     background-color: #d9433f;
     border-color: transparent;
+}
+table.dataTable tbody tr.selected {
+    background-color: #edc5c5;
+}
+table.dataTable tbody tr {
+    cursor: pointer;
 }
 .thead-color {
     color: black;
@@ -80,7 +93,7 @@
 }
 .navbar-custom {
     position: sticky;
-    top: 0;
+    top: 61px;
     background-color: transparent;
     border: none;
 }
