@@ -57,19 +57,37 @@
 .table>thead>tr.info>th {
     background-color: #b5e9e5c7;
 }
-.btn-update {
-    background-color: #5a895a;
+.mr-add {
+    background-color: #01607c;
     border-color: transparent;
-    color: white;
     color: white;
     padding: 3px 15px;
     margin-top: 15px;
     margin-left: 15px;
     border-radius: 2px;
+    display: flex;
+    align-items: center;
+}
+.mr-add:hover {
+    background-color: #006e8f;
+    border-color: transparent;
+}
+.btn-update {
+    background-color: #5a895a;
+    border-color: transparent;
+    color: white;
+    padding: 3px 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
 }
 .btn-update:hover {
     background-color: #529d52;
     border-color: transparent;
+    color: white;
+    text-decoration: none;
 }
 .btn-delete {
     background-color: #bf4b47;
@@ -79,6 +97,8 @@
     margin-top: 15px;
     margin-left: 15px;
     border-radius: 2px;
+    display: flex;
+    align-items: center;
 }
 .btn-delete:hover {
     background-color: #d9433f;
@@ -97,14 +117,28 @@ table.dataTable tbody tr {
     padding-top: 13px;
     padding-bottom: 13px;
 }
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 20px;
+}
+#search-by-fields {
+    width: 67%; 
+    margin: 0 auto 2em auto;
+}
+.dataTables_wrapper .dataTables_filter {
+    display: none;
+}
 .navbar-custom {
     position: sticky;
     top: 61px;
     background-color: transparent;
     border: none;
 }
+.table>thead>tr>th {
+    vertical-align: unset;
+}
 .panel {
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-top: 10px;
     box-shadow: 0px 0px 3px 1px #00000017;
     border-radius: 4px;
 }
@@ -112,16 +146,7 @@ table.dataTable tbody tr {
     background-color: #f2f1ed8a;
     margin-right: 0;
 }
-.mr-add {
-    margin: 10px 0 20px 10px;
-    width: 150px;
-    background-color: #01607c;
-    border-color: transparent;
-}
-.mr-add:hover {
-    background-color: #006e8f;
-    border-color: transparent;
-}
+
 .btn-success:focus, .btn-danger:focus, .btn-info:focus{
     outline: none !important;
 }
@@ -213,4 +238,5 @@ table.dataTable tbody tr {
 }
 .dataTables_wrapper .dataTables_length {
     margin-bottom: 10px;
+    padding-top: 20px;
 }

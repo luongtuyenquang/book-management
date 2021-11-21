@@ -1,5 +1,4 @@
 import BookList from "../BookList";
-import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import $, { data } from "jquery"
 window.jQuery = $
@@ -20,6 +19,7 @@ export default function Book() {
 
             let id = ''
 
+            // Pagination
            $(document).ready(function() {
             // $.noConflict();
             $('#myTable').DataTable( {
@@ -71,6 +71,31 @@ export default function Book() {
                 table.row('.selected').remove().draw( false );
             } );
 
+            // Search by Fields
+            function filterGlobal () {
+                $('#myTable').DataTable().search(
+                    $('#global_filter').val(),
+                ).draw();
+            }
+             
+            function filterColumn ( i ) {
+                $('#myTable').DataTable().column( i ).search(
+                    $('#col'+i+'_filter').val(),
+                ).draw();
+            }
+             
+            $(document).ready(function() {
+                $('#myTable').DataTable();
+             
+                $('input.global_filter').on( 'keyup click', function () {
+                    filterGlobal();
+                } );
+             
+                $('input.column_filter').on( 'keyup click', function () {
+                    filterColumn( $(this).parents('tr').attr('data-column') );
+                } );
+            } );
+
         } );
         
         // Index Column
@@ -98,11 +123,6 @@ export default function Book() {
 
     return (
         <div className='navbar-right'>
-            <div className='search'>
-                <h4>Quản lý Sách</h4>
-            </div>
-            <NavLink to='/book/add' type="button" className="btn btn-info mr-add">Thêm sách</NavLink>
-        
             <BookList bookID={bookID} />
         </div>
     );
