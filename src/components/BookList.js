@@ -1,11 +1,13 @@
 // import BookItem from "./BookItem";
+import { NavLink } from "react-router-dom";
 
-function BookList() {
+function BookList({bookID}) {
 
     return (
         <div className="panel panel-success">
             <div className="panel-heading heading-color">Danh sách Book</div>
-            <button className='btn-delete' id="button">Xóa</button>
+            <button className='btn-delete' id="btn-delete">Xóa</button>
+            <NavLink exact to={`/book/edit/${bookID}`} className='btn-update' id="btn-update">Chỉnh Sửa</NavLink>
             <div className="panel-body">
                 <table cellSpacing='10' cellPadding='10' className="table table-bordered" id='myTable'>
                     <thead className='thead-color'>

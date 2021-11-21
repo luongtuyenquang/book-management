@@ -60,8 +60,14 @@
 .btn-update {
     background-color: #5a895a;
     border-color: transparent;
+    color: white;
+    color: white;
+    padding: 3px 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 2px;
 }
-.btn-update :hover {
+.btn-update:hover {
     background-color: #529d52;
     border-color: transparent;
 }
@@ -69,10 +75,10 @@
     background-color: #bf4b47;
     border-color: transparent;
     color: white;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 3px 15px;
     margin-top: 15px;
     margin-left: 15px;
+    border-radius: 2px;
 }
 .btn-delete:hover {
     background-color: #d9433f;

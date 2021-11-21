@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router";
 import AddBookModal from "./components/AddBookModal";
-import Home from "./components/pages/Home";
+// import Home from "./components/pages/Home";
 import Book from "./components/pages/Book";
 import UpdateBookModal from "./components/UpdateBookModal";
 

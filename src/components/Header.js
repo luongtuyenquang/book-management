@@ -5,7 +5,7 @@ function Header() {
     return (
         <header className='header'>
             <div className='avatar'>
-                <img src={admin} alt />
+                <img src={admin} alt='' />
                 <NavLink to='#1' >Lương Tuyên Quang</NavLink>
             </div>
             <nav className="navbar navbar-inverse navbar-custom">

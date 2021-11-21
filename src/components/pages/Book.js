@@ -1,6 +1,6 @@
 import BookList from "../BookList";
 import { NavLink } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import $, { data } from "jquery"
 window.jQuery = $
 window.jquery = $
@@ -9,7 +9,7 @@ const axios = require('axios');
 
 export default function Book() {
 
-    let id = ''
+    const [bookID, setBookID] = useState('')
 
     useEffect(() => {
        async function fetchAPI(){
@@ -17,6 +17,8 @@ export default function Book() {
            const res = await axios.get(url)
 
            const dataSet = res.data
+
+            let id = ''
 
            $(document).ready(function() {
             // $.noConflict();
@@ -36,6 +38,7 @@ export default function Book() {
             } );
         } );
 
+
         $(document).ready(function() {
             var table = $('#myTable').DataTable();
          
@@ -49,10 +52,12 @@ export default function Book() {
                     $(this).addClass('selected');
                     var data = table.row( this ).data();
                     id = data.ID
+                    setBookID(id)
                 }
             } );
-         
-            $('#button').click( function () {
+            
+            // Delete
+            $('#btn-delete').click( function () {
                 table.row('.selected').remove().draw( false );
                 axios.delete(`http://localhost:8000/book/${id}`)
                 const newBookList = dataSet.filter((data) => {
@@ -60,8 +65,15 @@ export default function Book() {
                 })
                 return newBookList
             } );
-        } );
 
+            // Update
+            $('#btn-update').click( function () {
+                table.row('.selected').remove().draw( false );
+            } );
+
+        } );
+        
+        // Index Column
         $(document).ready(function() {
             var t = $('#myTable').DataTable( {
                 "columnDefs": [ {
@@ -84,7 +96,6 @@ export default function Book() {
        fetchAPI()
    }, [])
 
-
     return (
         <div className='navbar-right'>
             <div className='search'>
@@ -92,8 +103,7 @@ export default function Book() {
             </div>
             <NavLink to='/book/add' type="button" className="btn btn-info mr-add">Thêm sách</NavLink>
         
-            <BookList />
-
+            <BookList bookID={bookID} />
         </div>
     );
 }
