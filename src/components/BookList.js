@@ -19,33 +19,33 @@ function BookList({bookID}) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr id="filter_col2" data-column="1">
+                        <tr id="filter_col2" data-column="0">
                             <td>Mã sách</td>
-                            <td align="center"><input type="text" className="column_filter" id="col1_filter" /></td>
+                            <td align="center"><input style={{marginBottom: 5 + 'px'}} type="text" className="column_filter" id="col0_filter" /></td>
                         </tr>
-                        <tr id="filter_col3" data-column="2">
+                        <tr id="filter_col3" data-column="1">
                             <td>Tên sách</td>
-                            <td align="center"><input type="text" className="column_filter" id="col2_filter" /></td>
+                            <td align="center"><input style={{marginBottom: 5 + 'px'}} type="text" className="column_filter" id="col1_filter" /></td>
                         </tr>
-                        <tr id="filter_col5" data-column="4">
+                        <tr id="filter_col5" data-column="2">
                             <td>Tóm tắt</td>
-                            <td align="center"><input type="text" className="column_filter" id="col4_filter" /></td>
+                            <td align="center"><input style={{marginBottom: 5 + 'px'}} type="text" className="column_filter" id="col2_filter" /></td>
+                        </tr>
+                        <tr id="filter_col6" data-column="3">
+                            <td>Link</td>
+                            <td align="center"><input style={{marginBottom: 5 + 'px'}} type="text" className="column_filter" id="col3_filter" /></td>
+                        </tr>
+                        <tr id="filter_col6" data-column="4">
+                            <td>Ngày xuất bản</td>
+                            <td align="center"><input style={{marginBottom: 5 + 'px'}} type="text" className="column_filter" id="col4_filter" /></td>
                         </tr>
                         <tr id="filter_col6" data-column="5">
-                            <td>Link</td>
-                            <td align="center"><input type="text" className="column_filter" id="col5_filter" /></td>
+                            <td>Nhà xuất bản</td>
+                            <td align="center"><input style={{marginBottom: 5 + 'px'}} type="text" className="column_filter" id="col5_filter" /></td>
                         </tr>
                         <tr id="filter_col6" data-column="6">
-                            <td>Ngày xuất bản</td>
-                            <td align="center"><input type="text" className="column_filter" id="col6_filter" /></td>
-                        </tr>
-                        <tr id="filter_col6" data-column="7">
-                            <td>Nhà xuất bản</td>
-                            <td align="center"><input type="text" className="column_filter" id="col7_filter" /></td>
-                        </tr>
-                        <tr id="filter_col6" data-column="8">
                             <td>Tên tác giả</td>
-                            <td align="center"><input type="text" className="column_filter" id="col8_filter" /></td>
+                            <td align="center"><input type="text" className="column_filter" id="col6_filter" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -53,10 +53,8 @@ function BookList({bookID}) {
                     <th></th>
                     <thead className='thead-color'>
                         <tr className="info">
-                        <th scope="col">STT</th>
                         <th scope="col">Mã Sách</th>
                         <th scope="col">Tên Sách</th>
-                        <th scope="col">Hình Bìa</th>
                         <th scope="col">Tóm Tắt</th>
                         <th scope="col">Link</th>
                         <th scope="col">Ngày Xuất Bản</th>
@@ -65,21 +63,6 @@ function BookList({bookID}) {
                         {/* <th scope="col">Hành động</th> */}
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                    <th>Salary</th>
-                    <th>Salary</th>
-                </tr>
-                    </tbody>
-                    <tfoot>
-
-                    </tfoot>
                 </table>
             </div>
         </div>
